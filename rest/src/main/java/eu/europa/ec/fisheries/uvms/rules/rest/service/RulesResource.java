@@ -22,6 +22,7 @@ import eu.europa.ec.fisheries.uvms.rules.service.bean.RulePostProcessBean;
 import eu.europa.ec.fisheries.uvms.rules.service.bean.RulesEngineBean;
 import eu.europa.ec.fisheries.uvms.rules.service.bean.RulesKieContainerInitializer;
 import eu.europa.ec.fisheries.uvms.rules.service.bean.activity.FaResponseRulesMessageServiceBean;
+import eu.europa.ec.fisheries.uvms.rules.service.bean.asset.client.IAssetClient;
 import eu.europa.ec.fisheries.uvms.rules.service.bean.asset.client.impl.AssetClientBean;
 import eu.europa.ec.fisheries.uvms.rules.service.business.AbstractFact;
 import eu.europa.ec.fisheries.uvms.rules.service.business.ValidationResultDto;
@@ -75,7 +76,7 @@ public class RulesResource {
     private FaResponseRulesMessageServiceBean faResponseValidatorAndSender;
 
     @EJB
-    private AssetClientBean assetClientBean;
+    private IAssetClient assetClientBean;
 
     @POST
     @Consumes(value = {MediaType.APPLICATION_XML})

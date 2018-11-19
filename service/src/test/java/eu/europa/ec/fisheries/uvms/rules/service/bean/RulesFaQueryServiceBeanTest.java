@@ -70,7 +70,7 @@ public class RulesFaQueryServiceBeanTest {
         inOrder.verify(rulesEngine, times(1)).evaluate(any(BusinessObjectType.class), Matchers.anyObject(), anyMap(), anyString());
         inOrder.verify(rulePostProcessBean, times(1)).checkAndUpdateValidationResult(anyCollection(), anyString(), anyString(), any(RawMsgType.class));
         inOrder.verify(exchangeServiceBean, times(1)).evaluateAndSendToExchange(any(FLUXResponseMessage.class), any(RulesBaseRequest.class), any(PluginType.class),anyBoolean(), anyMap());
-        inOrder.verify(activityService, times(0)).checkSubscriptionPermissions(anyString(), any(MessageType.class));
+        inOrder.verify(activityService, times(0)).checkSubscriptionPermissions(anyString(), any(MessageType.class), true);
 
     }
 
@@ -85,7 +85,7 @@ public class RulesFaQueryServiceBeanTest {
         inOrder.verify(rulesEngine, times(1)).evaluate(any(BusinessObjectType.class), Matchers.anyObject(), anyMap());
         inOrder.verify(rulePostProcessBean, times(1)).checkAndUpdateValidationResult(anyCollection(), anyString(), anyString(), any(RawMsgType.class));
         inOrder.verify(exchangeServiceBean, times(0)).evaluateAndSendToExchange(any(FLUXResponseMessage.class), any(RulesBaseRequest.class), any(PluginType.class),anyBoolean(), anyMap());
-        inOrder.verify(activityService, times(0)).checkSubscriptionPermissions(anyString(), any(MessageType.class));
+        inOrder.verify(activityService, times(0)).checkSubscriptionPermissions(anyString(), any(MessageType.class), true);
 
     }
 

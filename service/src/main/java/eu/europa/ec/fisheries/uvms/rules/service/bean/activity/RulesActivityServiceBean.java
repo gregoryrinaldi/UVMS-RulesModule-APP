@@ -51,12 +51,13 @@ public class RulesActivityServiceBean {
     private RulesResponseQueueProducer rulesResponseProducer;
 
 
-    public boolean checkSubscriptionPermissions(String request, MessageType type) {
+    public boolean checkSubscriptionPermissions(String request, MessageType type, boolean incoming) {
         try {
             String requestStr = ActivityModuleRequestMapper.mapToSubscriptionRequest(request, type);
             log.debug("Send MapToSubscriptionRequest to Activity");
-            HashMap<String, String> map = new HashMap<>();
-            map.put("messageSelector","SubscriptionCheck");
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("messageSelector", "SubscriptionCheck");
+            map.put("incoming", incoming);
             String corrId = rulesActivityServiceBean.sendModuleMessageWithProps(requestStr, rulesResponseProducer.getDestination(), map);
             TextMessage message = consumer.getMessage(corrId, TextMessage.class, 240000L);
             log.debug("Received response message from Subscription.");

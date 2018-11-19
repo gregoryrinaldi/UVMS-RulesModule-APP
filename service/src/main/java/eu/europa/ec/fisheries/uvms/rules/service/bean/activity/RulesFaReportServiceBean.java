@@ -130,7 +130,7 @@ public class RulesFaReportServiceBean {
 
             if (faReportValidationResult != null && !faReportValidationResult.isError()) {
                 log.debug(" The Validation of Report is successful, forwarding message to Activity.");
-                boolean hasPermissions = activityServiceBean.checkSubscriptionPermissions(requestStr, MessageType.FLUX_FA_REPORT_MESSAGE);
+                boolean hasPermissions = activityServiceBean.checkSubscriptionPermissions(requestStr, MessageType.FLUX_FA_REPORT_MESSAGE, true);
                 if (hasPermissions) {
                     rulesDaoBean.saveFaIdsPerTripList(faIdsPerTripsFromMessage);
                     log.debug(" Request has permissions. Going to send FaReportMessage to Activity Module...");
